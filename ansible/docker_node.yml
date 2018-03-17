@@ -1,2 +1,7 @@
 ---
 # Install docker service
+- hosts: node
+  become: true
+
+  roles:
+    - dockerce.install

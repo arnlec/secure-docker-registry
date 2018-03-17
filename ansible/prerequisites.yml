@@ -1,6 +1,7 @@
 ---
 # Install prerequisites
 - hosts: all
+  become: true
   tasks:
     - name: install python
       yum:

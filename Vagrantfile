@@ -20,6 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      cat /vagrant/vagrant_rsa.pub >> /home/ansible/.ssh/authorized_keys
      chown ansible /home/ansible/.ssh/authorized_keys
      chgrp ansible /home/ansible/.ssh/authorized_keys
+     echo "ansible ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ansible
   SHELL
 
 end

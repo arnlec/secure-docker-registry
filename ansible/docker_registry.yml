@@ -1,2 +1,6 @@
 ---
 # Install docker registry
+- hosts: registry
+  become: true
+  roles:
+    - dockerce.install

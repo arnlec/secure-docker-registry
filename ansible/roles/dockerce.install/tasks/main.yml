@@ -1,0 +1,30 @@
+---
+# tasks file for dockerce.install
+- name: install required package to setup docker ce repository
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: setup docker ce repository
+  yum_repository:
+    name: docker-ce-stable
+    description: Docker CE Stable
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+- name: install docker ce
+  yum:
+    name: docker-ce
+    state: present
+
+- name: start docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes

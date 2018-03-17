@@ -1,5 +1,5 @@
 ---
 # Docker registry and clients deployment
 - import_playbook: prerequisites.yml
-#- import_playbook: docker_registry.yml
-#- import_playbook: docker_nodes.yml
+- import_playbook: docker_registry.yml
+- import_playbook: docker_node.yml
