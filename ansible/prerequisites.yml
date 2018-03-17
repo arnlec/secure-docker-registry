@@ -1,0 +1,8 @@
+---
+# Install prerequisites
+- hosts: all
+  tasks:
+    - name: install python
+      yum:
+        name: python
+        state: present
