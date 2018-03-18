@@ -41,3 +41,15 @@
     src: ca.crt.j2
     dest: "/etc/docker/certs.d/{{dockerTrustRegistry.domain}}/ca.crt"
   when: dockerTrustRegistry is defined
+
+- name: copy client ssl files
+  template:
+    src: "{{item}}.j2"
+    dest: "/etc/docker/certs.d/{{dockerTrustRegistry.domain}}/{{item}}"
+    mode: 0600
+  with_items:
+    - client.cert
+    - client.key
+  when:
+    - dockerClientCACertificat is defined
+    - dockerClientPrivateKey is defined

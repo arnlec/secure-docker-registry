@@ -4,3 +4,13 @@
   docker:
     name: registry
     state: restarted
+    image: registry:2
+    ports:
+      - "{{ dockerRegistryPort }}:5000"
+    volumes:
+      - "{{ dockerRegistryStorageLocation }}:/var/lib/registry"
+      - "/etc/docker-registry/ssl:/certs"
+    env:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/registry.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/registry.key
+      REGISTRY_HTTP_TLS_CLIENTCAS_0: /certs/ca.crt

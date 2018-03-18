@@ -19,6 +19,7 @@
   with_items:
     - registry.crt
     - registry.key
+    - ca.crt
   notify:
     - restart registry
 
@@ -35,3 +36,4 @@
     env:
       REGISTRY_HTTP_TLS_CERTIFICATE: /certs/registry.crt
       REGISTRY_HTTP_TLS_KEY: /certs/registry.key
+      REGISTRY_HTTP_TLS_CLIENTCAS: ' - /certs/ca.crt'

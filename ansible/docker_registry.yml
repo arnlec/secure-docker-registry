@@ -8,3 +8,4 @@
       dockerRegistryPort: "{{_registryPort }}"
       dockerRegistrySslKey: "{{_registrySSLKey}}"
       dockerRegistrySslCertificate: "{{_registrySSLCertificate}}"
+      dockerRegistryCA: "{{_registryCA}}"

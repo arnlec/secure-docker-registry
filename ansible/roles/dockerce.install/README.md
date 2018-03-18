@@ -12,6 +12,8 @@ Role Variables
 --------------
 
 * dockerTrustRegistry (default: optional)
+* dockerClientCACertificat
+* dockerClientPrivateKey
 
 Dependencies
 ------------

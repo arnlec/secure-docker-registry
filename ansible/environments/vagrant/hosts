@@ -3,3 +3,4 @@ registry.docker ansible_host=10.0.0.10
 
 [node]
 node1.docker ansible_host=10.0.0.11
+node2.docker ansible_host=10.0.0.12

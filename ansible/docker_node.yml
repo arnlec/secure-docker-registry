@@ -5,6 +5,8 @@
 
   roles:
     - role: dockerce.install
+      dockerClientCACertificat: "{{_clientCACertificate}}"
+      dockerClientPrivateKey: "{{_clientPrivateKey}}"
       dockerTrustRegistry:
         domain: "{{groups.registry[0]}}"
         certificate: "{{_registrySSLCertificate}}"

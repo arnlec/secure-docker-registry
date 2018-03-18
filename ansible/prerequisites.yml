@@ -3,12 +3,15 @@
 - hosts: all
   become: true
   tasks:
+    - name: install epel-release repository
+      yum:
+        name: epel-release
+        state: present
     - name: install prerequisites
       yum:
         name: "{{ item }}"
         state: present
       with_items:
-        - epel-release
         - python
         - python2-pip
 

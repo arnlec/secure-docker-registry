@@ -14,6 +14,7 @@ Role Variables
 Mandatory variables:
 * dockerRegistrySslKey
 * dockerRegistrySslCertificate
+* dockerRegistryCA
 
 Optional variables:
 * dockerRegistryPort (default: 5000)

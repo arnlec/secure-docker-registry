@@ -14,6 +14,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     www.vm.network :private_network, ip: "10.0.0.11"
   end
 
+  config.vm.define "node2.docker" do |www|
+    www.vm.network :private_network, ip: "10.0.0.12"
+  end
+
   config.vm.provision "shell", inline: <<-SHELL
      adduser ansible
      mkdir -p /home/ansible/.ssh
