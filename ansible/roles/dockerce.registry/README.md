@@ -12,11 +12,12 @@ Role Variables
 --------------
 
 Mandatory variables:
-* dockerRegistryPort
-* dockerRegistryStorageLocation
+* dockerRegistrySslKey
+* dockerRegistrySslCertificate
 
 Optional variables:
-* ...
+* dockerRegistryPort (default: 5000)
+* dockerRegistryStorageLocation (default: /var/lib/registry)
 
 Dependencies
 ------------

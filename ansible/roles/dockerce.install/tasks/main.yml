@@ -28,3 +28,16 @@
     name: docker
     state: started
     enabled: yes
+
+- name: create folder for registry certificate
+  file:
+    path: "/etc/docker/certs.d/{{dockerTrustRegistry.domain}}"
+    state: directory
+    mode: 0600
+  when: dockerTrustRegistry is defined
+
+- name: copy registry certificate
+  template:
+    src: ca.crt.j2
+    dest: "/etc/docker/certs.d/{{dockerTrustRegistry.domain}}/ca.crt"
+  when: dockerTrustRegistry is defined

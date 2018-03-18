@@ -1,2 +1,6 @@
 ---
 # handlers file for dockerce.registry
+- name: restart registry
+  docker:
+    name: registry
+    state: restarted

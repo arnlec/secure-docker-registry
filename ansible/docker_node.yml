@@ -4,4 +4,13 @@
   become: true
 
   roles:
-    - dockerce.install
+    - role: dockerce.install
+      dockerTrustRegistry:
+        domain: "{{groups.registry[0]}}"
+        certificate: "{{_registrySSLCertificate}}"
+      when: _registryPort == 443
+    - role: dockerce.install
+      dockerTrustRegistry:
+        domain: "{{groups.registry[0]}}:{{_registryPort}}"
+        certificate: "{{_registrySSLCertificate}}"
+      when: _registryPort != 443

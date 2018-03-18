@@ -11,7 +11,7 @@ No requirements
 Role Variables
 --------------
 
-No variables
+* dockerTrustRegistry (default: optional)
 
 Dependencies
 ------------
@@ -23,7 +23,10 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - dockerce.install
+         - role: dockerce.install
+           dockerTrustRegistry:
+             domain: registrydomain
+             certificate: <certificat>
 
 License
 -------

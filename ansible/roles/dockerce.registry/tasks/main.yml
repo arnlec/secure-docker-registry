@@ -5,12 +5,33 @@
     path: "{{ dockerRegistryStorageLocation }}"
     state: directory
 
+- name: create ssl folder
+  file:
+    path: /etc/docker-registry/ssl
+    state: directory
+    mode: 0600
+
+- name: copy ssl files
+  template:
+    src: "{{item}}.j2"
+    dest: "/etc/docker-registry/ssl/{{item}}"
+    mode: 0600
+  with_items:
+    - registry.crt
+    - registry.key
+  notify:
+    - restart registry
+
 - name: start docker container
   docker:
     name: registry
     image: registry:2
-    state: started
+    state: reloaded
     ports:
       - "{{ dockerRegistryPort }}:5000"
     volumes:
       - "{{ dockerRegistryStorageLocation }}:/var/lib/registry"
+      - "/etc/docker-registry/ssl:/certs"
+    env:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/registry.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/registry.key

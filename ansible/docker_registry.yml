@@ -4,4 +4,7 @@
   become: true
   roles:
     - dockerce.install
-    - dockerce.registry
+    - role: dockerce.registry
+      dockerRegistryPort: "{{_registryPort }}"
+      dockerRegistrySslKey: "{{_registrySSLKey}}"
+      dockerRegistrySslCertificate: "{{_registrySSLCertificate}}"
