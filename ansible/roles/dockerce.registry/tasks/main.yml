@@ -1,0 +1,16 @@
+---
+# tasks file for dockerce.registry
+- name: create storage location
+  file:
+    path: "{{ dockerRegistryStorageLocation }}"
+    state: directory
+
+- name: start docker container
+  docker:
+    name: registry
+    image: registry:2
+    state: started
+    ports:
+      - "{{ dockerRegistryPort }}:5000"
+    volumes:
+      - "{{ dockerRegistryStorageLocation }}:/var/lib/registry"

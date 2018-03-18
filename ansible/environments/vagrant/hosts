@@ -1,5 +1,5 @@
 [registry]
-10.0.0.10
+registry.docker ansible_host=10.0.0.10
 
 [node]
-10.0.0.11
+node1.docker ansible_host=10.0.0.11

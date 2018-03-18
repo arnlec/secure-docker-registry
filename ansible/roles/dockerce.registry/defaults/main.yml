@@ -1,0 +1,4 @@
+---
+# defaults file for dockerce.registry
+dockerRegistryPort: 5000
+dockerRegistryStorageLocation: /var/lib/registry

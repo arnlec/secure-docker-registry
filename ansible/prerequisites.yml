@@ -3,7 +3,24 @@
 - hosts: all
   become: true
   tasks:
-    - name: install python
+    - name: install prerequisites
       yum:
-        name: python
+        name: "{{ item }}"
         state: present
+      with_items:
+        - epel-release
+        - python
+        - python2-pip
+
+    - name: install ansible dependencies
+      pip:
+        name: docker-py
+        state: present
+
+    - name: update /etc/hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: '^.*{{item}}$'
+        line: '{{ hostvars[item].ansible_host }} {{ item }}'
+        state: present
+      with_items: '{{groups.all}}'
